@@ -19,3 +19,12 @@ CREATE TABLE classes(
     name VARCHAR(20) ,
     classroom_number int
 );
+
+CREATE TABLE courses(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+    title VARCHAR(20) ,
+    description TEXT,
+    total_hours int ,
+    ens_id int ,
+    Foreign Key (ens_id) REFERENCES users(id)
+);
