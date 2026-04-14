@@ -28,3 +28,13 @@ CREATE TABLE courses(
     ens_id int ,
     Foreign Key (ens_id) REFERENCES users(id)
 );
+CREATE TABLE students(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+    dateofbirth date ,
+    student_number int UNIQUE,
+    user_id int,
+    Foreign Key (user_id) REFERENCES users(id),
+    class_id int,
+    Foreign Key (class_id) REFERENCES classes(id)
+   
+);
