@@ -38,3 +38,11 @@ CREATE TABLE students(
     Foreign Key (class_id) REFERENCES classes(id)
    
 );
+CREATE TABLE enrollments(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+    student_id int ,
+    cours_id int,
+    status VARCHAR(20) ,
+    enrollement date
+    
+);
