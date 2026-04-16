@@ -60,3 +60,19 @@ Chaque inscription contient :
 - course_id
 - date d’inscription
 - statut (Actif / Terminé)
+
+## Relations entre les tables
+
+- roles → users (1 and only 1:1 or N)
+- users → students (1 and only 1:1 or N)
+- classes → students (1:N)
+- users (professeurs) → courses (1 and only 1:1 or N)
+- students ↔ courses (N:N via enrollments)
+
+## Contraintes importantes
+
+- email est UNIQUE dans users
+- student_number est UNIQUE dans students
+- relation 1:1 entre users et students
+- clé composite UNIQUE(student_id, course_id) dans enrollments
+- intégrité référentielle assurée par les FOREIGN KEY
