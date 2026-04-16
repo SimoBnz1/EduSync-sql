@@ -10,3 +10,9 @@ INSERT INTO classes(name,classroom_number)
 VALUES('Développeur Web 2026',20),
 ('Data Science 2026',16),
 ('Réseau 2026',14);
+
+INSERT INTO courses(title, description, total_hours, ens_id)
+VALUES
+('HTML/CSS', 'Introduction au web', 40, 2),
+('JavaScript', 'Programmation JS', 60, 2),
+('Base de données', 'SQL et modélisation', 50, 2);
