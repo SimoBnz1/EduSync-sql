@@ -86,6 +86,7 @@ Le fichier seed.sql contient des données de test permettant de remplir toutes l
 - MySQL
 - SQL (DDL & DML) -> (DDL=Data Definition Language),(DML=Data Manipulation Language)
 - Modélisation ERD (Lucidchart)
+![alt text](ERD.png)
 
 
 ## Méthodologie
@@ -98,3 +99,4 @@ Le projet a été réalisé en suivant une approche :
 - Implémentation des tables et relations
 - Insertion des données de test
 - Tests et validation
+
