@@ -76,3 +76,25 @@ Chaque inscription contient :
 - relation 1:1 entre users et students
 - clé composite UNIQUE(student_id, course_id) dans enrollments
 - intégrité référentielle assurée par les FOREIGN KEY
+
+## Jeux de données (seed)
+
+Le fichier seed.sql contient des données de test permettant de remplir toutes les tables et de vérifier les relations entre elles.
+
+## Technologies utilisées
+
+- MySQL
+- SQL (DDL & DML) -> (DDL=Data Definition Language),(DML=Data Manipulation Language)
+- Modélisation ERD (Lucidchart)
+
+
+## Méthodologie
+
+Le projet a été réalisé en suivant une approche :
+
+- Analyse des user stories
+- Modélisation ERD
+- Création de la base de données
+- Implémentation des tables et relations
+- Insertion des données de test
+- Tests et validation
