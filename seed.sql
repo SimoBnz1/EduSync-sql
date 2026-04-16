@@ -16,3 +16,7 @@ VALUES
 ('HTML/CSS', 'Introduction au web', 40, 2),
 ('JavaScript', 'Programmation JS', 60, 2),
 ('Base de données', 'SQL et modélisation', 50, 2);
+
+INSERT INTO students(dateofbirth, student_number, user_id, class_id)
+VALUES
+('2002-05-10', 'STU001', 3, 1);
