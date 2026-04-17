@@ -1,50 +1,68 @@
 CREATE DATABASE edusync ;
 USE edusync;
 CREATE TABLE roles (
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    lable TEXT
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  label VARCHAR(50) NOT NULL UNIQUE
 );
-CREATE TABLE users(
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    fierstname VARCHAR(20) ,
-    lastname VARCHAR(20),
-    email VARCHAR(20) UNIQUE ,
-    password VARCHAR(20) ,
-    role_id int,
-    Foreign Key (role_id) REFERENCES roles(id)
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  firstname VARCHAR(50) NOT NULL,
+  lastname VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role_id INT NOT NULL,
+
+  FOREIGN KEY (role_id) REFERENCES roles(id)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
+);
+CREATE TABLE classes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  classroom_number VARCHAR(20) NOT NULL
+);
+CREATE TABLE courses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  total_hours INT NOT NULL,
+  user_id INT NOT NULL,
+
+  FOREIGN KEY (user_id) REFERENCES users(id)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
 );
 
-CREATE TABLE classes(
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    name VARCHAR(20) ,
-    classroom_number int
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  dateofbirth DATE NOT NULL,
+  student_number VARCHAR(50) NOT NULL UNIQUE,
+  user_id INT NOT NULL UNIQUE,
+  class_id INT NOT NULL,
+
+  FOREIGN KEY (user_id) REFERENCES users(id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+  FOREIGN KEY (class_id) REFERENCES classes(id)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
 );
 
-CREATE TABLE courses(
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    title VARCHAR(20) ,
-    description TEXT,
-    total_hours int ,
-    ens_id int ,
-    Foreign Key (ens_id) REFERENCES users(id)
-);
-CREATE TABLE students(
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    dateofbirth date ,
-    student_number int UNIQUE,
-    user_id int,
-    Foreign Key (user_id) REFERENCES users(id),
-    class_id int,
-    Foreign Key (class_id) REFERENCES classes(id)
-   
-);
-CREATE TABLE enrollments(
-    id int AUTO_INCREMENT PRIMARY KEY ,
-    student_id int ,
-    cours_id int,
-    status VARCHAR(20) ,
-    enrollement date
-    
-);
+CREATE TABLE enrollments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT NOT NULL,
+  course_id INT NOT NULL,
+  enrolled_at DATE NOT NULL,
+  status ENUM('Actif', 'Terminé') DEFAULT 'Actif',
 
+  UNIQUE (student_id, course_id),
 
+  FOREIGN KEY (student_id) REFERENCES students(id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+  FOREIGN KEY (course_id) REFERENCES courses(id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);

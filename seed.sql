@@ -19,4 +19,28 @@ VALUES
 
 INSERT INTO students(dateofbirth, student_number, user_id, class_id)
 VALUES
-('2002-05-10', 'STU001', 3, 1);
+('1999-05-10', 3, 3, 1);
+
+
+DELETE FROM students 
+
+SELECT * FROM students;
+
+
+INSERT INTO enrollments(student_id, cours_id, enrollement, status)
+VALUES
+(1, 1, '2026-04-10', 'Actif'),
+(1, 2, '2026-04-11', 'Actif'),
+(2, 1, '2026-04-12', 'Terminé');
+
+/*Afficher tous les utilisateurs */
+SELECT * FROM users ;
+ /*Afficher le prénom, nom et email des utilisateurs avec son role */
+SELECT * FROM users us
+INNER JOIN roles rl ON us.role_id=rl.id
+
+/*Afficher les étudiants avec les informations de leurs utilisateurs*/ 
+
+SELECT st.dateofbirth,st.student_number,st.class_id,us.fierstname,us.lastname,us.email,st.user_id,us.id
+FROM students st 
+INNER JOIN users us ON st.user_id =us.id
